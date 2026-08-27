@@ -1,0 +1,14 @@
+cff-version: 1.2.0
+message: "If you use this case database, please cite the repository and the associated article."
+title: "International High-Speed Rail Cooperation, Innovation and Technology R&D Case Retrieval System"
+type: dataset
+authors:
+  - family-names: "Ji"
+    given-names: "Wenya"
+version: 0.2.0-preview
+repository-code: "https://github.com/jiwenya1234/international-hsr-innovation-cases"
+keywords:
+  - high-speed rail
+  - collaborative innovation
+  - technology transfer
+  - case database

@@ -1,0 +1,10 @@
+{
+  "name": "international-hsr-innovation-cases",
+  "private": true,
+  "version": "0.2.0",
+  "type": "module",
+  "scripts": {
+    "check:preview": "node scripts/prepare-release.mjs --allow-preview --check",
+    "prepare": "node scripts/prepare-release.mjs"
+  }
+}
