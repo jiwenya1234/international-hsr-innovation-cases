@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="64个国际高铁产业合作创新与技术研发案例的公开检索与证据索引。">
+    <title>国际高铁产业合作创新与技术研发案例检索系统</title>
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="wordmark" href="#cases" aria-label="返回案例检索">
+        <span class="wordmark-mark">IHSR</span>
+        <span>Case Index</span>
+      </a>
+      <nav aria-label="主导航">
+        <a class="active" href="#cases">案例检索</a>
+        <a href="#method">研究方法</a>
+        <a href="#data-note">数据说明</a>
+      </nav>
+      <span class="version" id="versionBadge">Release preview</span>
+    </header>
+
+    <main>
+      <section class="intro-band" aria-labelledby="pageTitle">
+        <div class="intro-copy">
+          <p class="eyebrow">International High-Speed Rail Cooperation &amp; Innovation Cases</p>
+          <h1 id="pageTitle">国际高铁产业合作创新与<br>技术研发案例检索系统</h1>
+          <p class="lede">面向学术核查的项目级案例索引。每个正式案例连接合作主体、技术或知识流动、创新结果与原始证据来源。</p>
+        </div>
+        <div class="release-note" id="releaseNote">
+          <span class="release-dot" aria-hidden="true"></span>
+          <div>
+            <strong>数据准备中</strong>
+            <p>公开版将在64个正式案例逐项核验后发布。</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="metrics-band" aria-label="数据库摘要">
+        <div class="metric primary">
+          <span>正式案例</span>
+          <strong><b id="caseCount">0</b><small> / 64</small></strong>
+        </div>
+        <div class="metric">
+          <span>涉及国家或地区</span>
+          <strong id="countryCount">0</strong>
+        </div>
+        <div class="metric">
+          <span>可核查来源</span>
+          <strong id="sourceCount">0</strong>
+        </div>
+        <div class="metric">
+          <span>最近更新</span>
+          <strong class="date-value" id="updatedDate">待发布</strong>
+        </div>
+        <div class="metric-actions">
+          <a class="button secondary" href="./data/cases.csv" download>下载 CSV</a>
+          <a class="button secondary" href="./data/public-cases.json" download>下载 JSON</a>
+        </div>
+      </section>
+
+      <section class="catalog" id="cases" aria-label="案例检索">
+        <div class="catalog-head">
+          <div>
+            <p class="section-label">Case catalogue</p>
+            <h2>正式案例索引</h2>
+          </div>
+          <p id="resultSummary">正在读取公开数据</p>
+        </div>
+
+        <div class="filters" aria-label="案例筛选">
+          <label class="search-field">
+            <span>关键词</span>
+            <input id="searchInput" type="search" placeholder="检索项目、主体、国家或技术">
+          </label>
+          <label>
+            <span>国家或地区</span>
+            <select id="countryFilter"><option value="all">全部</option></select>
+          </label>
+          <label>
+            <span>合作形式</span>
+            <select id="formFilter"><option value="all">全部</option></select>
+          </label>
+          <label>
+            <span>技术领域</span>
+            <select id="technologyFilter"><option value="all">全部</option></select>
+          </label>
+          <label>
+            <span>排序</span>
+            <select id="sortSelect">
+              <option value="id">案例编号</option>
+              <option value="year-desc">时间：从新到旧</option>
+              <option value="year-asc">时间：从早到晚</option>
+              <option value="name">案例名称</option>
+            </select>
+          </label>
+          <button class="reset-button" id="resetButton" type="button">重置</button>
+        </div>
+
+        <div class="catalog-body">
+          <aside class="case-index" aria-label="案例列表">
+            <ol id="caseList"></ol>
+            <div class="empty-state" id="emptyState" hidden>
+              <strong id="emptyTitle">正式案例正在整理</strong>
+              <p id="emptyText">完成64例核验并导入公开数据后，案例将显示在这里。</p>
+            </div>
+          </aside>
+
+          <article class="case-detail" id="caseDetail" aria-live="polite">
+            <div class="detail-placeholder" id="detailPlaceholder">
+              <span class="placeholder-number">64</span>
+              <h3>公开样本尚未发布</h3>
+              <p>页面结构已经就绪。最终案例将按照统一字段呈现，确保读者能够从研究结论返回原始证据。</p>
+            </div>
+
+            <div id="detailContent" hidden>
+              <header class="detail-header">
+                <div>
+                  <p class="case-code" id="detailId"></p>
+                  <h3 id="detailName"></h3>
+                  <p class="english-name" id="detailEnglishName"></p>
+                </div>
+                <span class="evidence-badge" id="evidenceGrade"></span>
+              </header>
+
+              <dl class="fact-strip">
+                <div><dt>国家或地区</dt><dd id="detailCountries"></dd></div>
+                <div><dt>关键年份</dt><dd id="detailYears"></dd></div>
+                <div><dt>项目类型</dt><dd id="detailProjectType"></dd></div>
+                <div><dt>证据来源</dt><dd id="detailSourceCount"></dd></div>
+              </dl>
+
+              <div class="tag-row" id="detailTags"></div>
+
+              <section class="detail-section">
+                <p class="section-number">01</p>
+                <div><h4>案例概览</h4><p id="detailOverview"></p></div>
+              </section>
+              <section class="detail-section">
+                <p class="section-number">02</p>
+                <div><h4>合作创新过程</h4><p id="detailProcess"></p></div>
+              </section>
+              <section class="detail-section">
+                <p class="section-number">03</p>
+                <div><h4>技术与知识流动</h4><p id="detailKnowledgeFlow"></p></div>
+              </section>
+              <section class="detail-section">
+                <p class="section-number">04</p>
+                <div><h4>创新结果</h4><p id="detailOutcome"></p></div>
+              </section>
+              <section class="detail-section">
+                <p class="section-number">05</p>
+                <div class="full-width">
+                  <h4>参与主体</h4>
+                  <div class="actor-table-wrap">
+                    <table>
+                      <thead><tr><th>主体</th><th>国家</th><th>类型</th><th>项目角色</th></tr></thead>
+                      <tbody id="actorRows"></tbody>
+                    </table>
+                  </div>
+                </div>
+              </section>
+              <section class="detail-section evidence-section">
+                <p class="section-number">06</p>
+                <div class="full-width">
+                  <h4>证据来源</h4>
+                  <p class="section-intro">链接指向原发布机构；本站只公开研究者概括，不再分发第三方全文。</p>
+                  <ol class="evidence-list" id="evidenceList"></ol>
+                </div>
+              </section>
+              <section class="inclusion-note">
+                <span>纳入依据</span>
+                <p id="detailRationale"></p>
+              </section>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="method-band" id="method">
+        <div class="method-heading">
+          <p class="section-label">Research protocol</p>
+          <h2>从检索线索到正式案例</h2>
+          <p>公开版提供最小但完整的核查链条；原始全文、研究笔记和模型凭证保留在私有研究档案中。</p>
+        </div>
+        <ol class="method-steps">
+          <li><span>01</span><strong>多语种检索</strong><p>组合高铁、合作主体、技术活动与项目名称进行检索。</p></li>
+          <li><span>02</span><strong>项目级归并</strong><p>同一项目的多条网页材料归并到统一案例记录。</p></li>
+          <li><span>03</span><strong>范围审查</strong><p>确认高铁属性、外国主体参与及实质性技术或知识流动。</p></li>
+          <li><span>04</span><strong>证据核验</strong><p>记录来源机构、发布日期、访问日期和证据用途。</p></li>
+          <li><span>05</span><strong>正式锁定</strong><p>仅经人工复核并标记为正式样本的项目计入64例。</p></li>
+        </ol>
+      </section>
+
+      <section class="data-band" id="data-note">
+        <div>
+          <p class="section-label">Open data boundary</p>
+          <h2>公开什么，不公开什么</h2>
+        </div>
+        <div class="boundary-columns">
+          <section>
+            <h3>公开核查信息</h3>
+            <p>案例名称、年份、国家、参与主体、合作形式、技术领域、研究者概括、纳入理由和原始来源索引。</p>
+          </section>
+          <section>
+            <h3>保留研究资料</h3>
+            <p>网页全文、受版权保护的PDF、个人笔记、排除样本、模型密钥、内部编码推理和未发表分析结果。</p>
+          </section>
+        </div>
+        <div class="document-links">
+          <a href="https://github.com/jiwenya1234/international-hsr-innovation-cases/blob/main/docs/METHODOLOGY.md">查看完整方法说明</a>
+          <a href="https://github.com/jiwenya1234/international-hsr-innovation-cases/blob/main/docs/DATA_DICTIONARY.md">查看数据字典</a>
+          <a href="https://github.com/jiwenya1234/international-hsr-innovation-cases/blob/main/docs/DATA_GOVERNANCE.md">查看数据治理说明</a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>International High-Speed Rail Cooperation, Innovation and Technology R&amp;D Case Index</p>
+      <p>公开数据用于学术核查；第三方来源版权归原发布者所有。</p>
+    </footer>
+
+    <script type="module" src="./app.js?v=20260827-02"></script>
+  </body>
+</html>
